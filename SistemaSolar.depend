@@ -226,3 +226,8 @@
 	<GL/glut.h>
 	<stdlib.h>
 
+1508088779 source:/home/marcosmota/Documentos/Projetos/OpenGL/TrabalhoOpenGL/main.cpp
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdlib.h>
+

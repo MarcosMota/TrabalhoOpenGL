@@ -1,4 +1,3 @@
-#include <windows.h>
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -6,9 +5,10 @@
 #endif
 
 #include <stdlib.h>
+using namespace std;
 
-static int slices = 16;
-static int stacks = 16;
+static int slices = 64;
+static int stacks = 64;
 
 const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
 const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -33,19 +33,49 @@ static void resize(int width, int height)
 
 static void display(void)
 {
-    const double t = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
-    const double a = t*5.0;
+    double t = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
+	double a = t; //*10.0;
 
-    // Posicao da camera
-    gluLookAt(0,0,-8, 0,0,0, 0,1,0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glColor3d(1, 0, 0);
 
-    glClear(GL_DEPTH_BUFFER_BIT);
-
-    // Desenhando a esfera
     glPushMatrix();
-        glRotated(a,0,1,0);
-        glutSolidSphere(1,16,stacks);
-        glColor3f(1.0f,0.6f,0.2f);
+    glTranslated(0, 0, -10);
+    glRotated(60, 1, 0, 0);
+    glRotated(a, 0, 0, 1);
+    glutSolidSphere(1, slices, stacks);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-1, -1, -8);
+    glRotated(60, 1, 0, 0);
+    glRotated(45, 0, 1, 1);
+    glutSolidSphere(0.2, slices, stacks);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-1.5, -1.5, -8);
+    glRotated(60, 1, 0, 0);
+    glRotated(45, 0, 0, 1);
+    glutSolidSphere(0.2, slices, stacks);
+    glPopMatrix();
+
+    
+    glPushMatrix();
+    glTranslated(-2.3, -2.3, -8);
+    glRotated(60, 1, 0, 0);
+    glRotated(45, 0, 1, 1);
+    glutSolidSphere(0.2, slices, stacks);
+    glLoadIdentity();
+    glTranslatef (0.0, 0.0, -10.0);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-2.6, -2.6, -8);
+    glRotated(60, 1, 0, 0);
+    glRotated(45, 0, 1, 1);
+    glutSolidSphere(0.08, slices, stacks);
+	glRotated(30*a, 5, 2, 1);
     glPopMatrix();
 
     glutSwapBuffers();
@@ -69,7 +99,7 @@ int main(int argc, char *argv[])
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
-    /* COMANDOS DE ILUMINACAO
+    /* COMANDOS DE ILUMINACAO*/
     glEnable(GL_LIGHT0);
     glEnable(GL_NORMALIZE);
     glEnable(GL_COLOR_MATERIAL);
@@ -82,7 +112,7 @@ int main(int argc, char *argv[])
     glMaterialfv(GL_FRONT, GL_DIFFUSE,   mat_diffuse);
     glMaterialfv(GL_FRONT, GL_SPECULAR,  mat_specular);
     glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
-    */
+    
 
     glutMainLoop();
 
