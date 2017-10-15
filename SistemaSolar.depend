@@ -220,14 +220,31 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1508091662 source:c:\projeto\trabalhoopengl\main.cpp
+1508105082 source:c:\projeto\trabalhoopengl\main.cpp
 	<windows.h>
+	<stdlib.h>
+	<stdio.h>
+	"planeta.h"
 	<GLUT/glut.h>
 	<GL/glut.h>
-	<stdlib.h>
 
 1508088779 source:/home/marcosmota/Documentos/Projetos/OpenGL/TrabalhoOpenGL/main.cpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<stdlib.h>
+
+1341010376 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1341010380 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
+
+1508105078 c:\projeto\trabalhoopengl\planeta.h
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<iostream>
 

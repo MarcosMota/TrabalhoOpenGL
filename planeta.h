@@ -1,4 +1,3 @@
-
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -9,26 +8,32 @@
 using namespace std;
 
 class Planeta{
-private:
-  float x, y;
-public:
-  void setX(float _x){
-	x = _x;
-  }
-  float getX(void){
-	return x;
-  }
-  void setY(float _y){
-	y = _y;
-  }
-  float getY(void){
-	return y;
-  }
-  void desenharPlaneta(){
-     glPushMatrix();
-        glRotated(a,0,1,0);
-        glutSolidSphere(1,16,stacks);
-        glColor3f(1.0f,0.6f,0.2f);
-    glPopMatrix();
-  }
+    private:
+        float x, y;
+        float red, green, blue, angulo;
+        int slices = 20;
+        int stacks = 20;
+    public:
+        void setX(float _x){
+            x = _x;
+        }
+        float getX(void){
+            return x;
+        }
+        void setY(float _y){
+            y = _y;
+        }
+        float getY(void){
+            return y;
+        }
+
+    void desenharPlaneta(float red, float green, float blue, float angulo){
+        glPushMatrix();
+            glRotated(angulo,0,1,0); // rotacao do planete
+            glTranslatef(0,0,0); // Posicao no espaco
+            glutSolidSphere(1,slices,stacks); // Esfera
+            glColor3f(red,green,blue); // Cor do planeta
+            glScaled(0,0,0); // Escala do planeta
+        glPopMatrix();
+    }
 };
