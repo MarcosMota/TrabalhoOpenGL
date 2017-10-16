@@ -9,22 +9,17 @@ using namespace std;
 
 class Planeta{
     private:
-        float x, y;
-        float red, green, blue, angulo;
+        float angulo;
         int slices = 20;
         int stacks = 20;
+        float color[3];
+        float pos[3];
     public:
-        void setX(float _x){
-            x = _x;
+        void setAngulo(float _angulo){
+            angulo = _angulo;
         }
-        float getX(void){
-            return x;
-        }
-        void setY(float _y){
-            y = _y;
-        }
-        float getY(void){
-            return y;
+        float getAngulo(void){
+            return angulo;
         }
 
     void desenharPlaneta(float red, float green, float blue, float angulo){
