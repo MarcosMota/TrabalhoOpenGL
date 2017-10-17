@@ -20,8 +20,9 @@ const GLfloat mat_diffuse[]    = { 0.8f, 0.8f, 0.8f, 1.0f };
 const GLfloat mat_specular[]   = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat high_shininess[] = { 100.0f };
 
-int vert, horiz, zoom = -25;
+int vert = 5, horiz, zoom = -15;
 
+// FUNÇÃO AO CAPTURAR O TECLADO
 static void teclado(unsigned char key, int x, int y)
 {
     switch (key)
@@ -53,85 +54,42 @@ static void teclado(unsigned char key, int x, int y)
     glutPostRedisplay();
 }
 
+// FUNÇÃO PARA MOSTRAR CONTEÚDO
 static void display(void)
 {
+    // CONFIGURACAO DA CAMERA
     Camera cam;
     cam.setPos(0,vert,zoom);
     cam.setRot(horiz,0,0);
     cam.createCamera();
+
+    // VARIAVEL DE TEMPO
     const double t = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // DESENHA O SOL NA TELA
     glPushMatrix();
-        glRotated(t*30,0,1,0); // rotacao do planete
         Planeta sol;
         sol.setColor(1.0f,0.0f,0.0f);
         sol.setPos(0.0,0.0,0.0);
-        sol.desenharPlaneta();
+        sol.setSize(1.5);
+        sol.drawPlanet();
     glPopMatrix();
-    // DESENHA O a NA TELA
+    // DESENHA O PLANETA EXEMPLO NA TELA
     glPushMatrix();
-        glRotated(t*40,0,1,0); // rotacao do planete
         Planeta a;
-        a.setColor(0.0f,0.0f,1.0f);
-        a.setPos(-5.0,0.0,0.0);
-        a.setScale(2,0,0);
-        a.desenharPlaneta();
+        a.setColor(0.0f,1.0f,0.0f);
+        a.setPos(5.0,0.0,0.0);
+        a.setCycleDay(t*10);
+        a.setCycleYear(t*20);
+        a.drawPlanet();
+        a.drawConeSpaceship();
     glPopMatrix();
-    // DESENHA O b NA TELA
-    glPushMatrix();
-        glRotated(t*50,0,1,0); // rotacao do planete
-        Planeta b;
-        b.setColor(0.0f,0.5f,1.0f);
-        b.setPos(-10.0,0.0,0.0);
-        b.desenharPlaneta();
-    glPopMatrix();
-    // DESENHA O c NA TELA
-    glPushMatrix();
-        glRotated(t*60,0,1,0); // rotacao do planete
-        Planeta c;
-        c.setColor(0.3f,0.0f,1.0f);
-        c.setPos(-15.0,0.0,0.0);
-        c.desenharPlaneta();
-    glPopMatrix();
-    // DESENHA O d NA TELA
-    glPushMatrix();
-        glRotated(t*70,0,1,0); // rotacao do planete
-        Planeta d;
-        d.setColor(0.0f,0.7f,1.0f);
-        d.setPos(-20.0,0.0,0.0);
-        d.desenharPlaneta();
-    glPopMatrix();
-    // DESENHA O e NA TELA
-    glPushMatrix();
-        glRotated(t*80,0,1,0); // rotacao do planete
-        Planeta e;
-        e.setColor(0.0f,0.8f,1.0f);
-        e.setPos(-25.0,0.0,0.0);
-        e.desenharPlaneta();
-    glPopMatrix();
-    // DESENHA O f NA TELA
-    glPushMatrix();
-        glRotated(t*90,0,1,0); // rotacao do planete
-        Planeta f;
-        f.setColor(0.5f,0.9f,1.0f);
-        f.setPos(-30.0,0.0,0.0);
-        f.desenharPlaneta();
-    glPopMatrix();
-    // DESENHA O g NA TELA
-    glPushMatrix();
-        glRotated(t*100,0,1,0); // rotacao do planete
-        Planeta g;
-        g.setColor(0.9f,0.6f,1.0f);
-        g.setPos(-35.0,0.0,0.0);
-        g.desenharPlaneta();
-    glPopMatrix();
-
 
     glutSwapBuffers();
 }
 
+// FUNÇÃO DE ATUALIZAÇÃO DA TELA
 static void resize(int width, int height)
 {
     const float ar = (float) width / (float) height;
@@ -145,6 +103,7 @@ static void resize(int width, int height)
     glLoadIdentity() ;
 }
 
+// EVITAR MEXER NO MAIN, PQ ESSA PORRA E BUGADA!
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
@@ -154,8 +113,12 @@ int main(int argc, char *argv[])
 
     glutCreateWindow("Sistema Solar");
 
+    // FUNCAO PARA MANTER OBJETOS AO ALTERAR JANELA
     glutReshapeFunc(resize);
+    // FUNCAO PARA MOSTRAR NA TELA
     glutDisplayFunc(display);
+    // CAPTURAR TECLADO
+    glutKeyboardFunc(teclado);
 
     // HABILITA REMOCAO DE FACES TRASEIRAS
     glEnable(GL_CULL_FACE);
@@ -163,8 +126,6 @@ int main(int argc, char *argv[])
     // ??
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
-    // CAPTURAR TECLADO
-    glutKeyboardFunc(teclado);
 
     // COMANDOS DE ILUMINACAO
     glEnable(GL_LIGHT0);

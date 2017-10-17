@@ -10,29 +10,32 @@ using namespace std;
 class Camera
 {
     private:
-        int pos[3];
-        int rot[3];
+        // PROPRIEDADES DA CLASSE.
+        int eye[3]; // Posição do ponto do olho.
+        int ref[3]; // Posição do ponto de referência.
     public:
+        // GETS AND SETTERS.
         void setPos(int x, int y, int z){
-            pos[0] = x;
-            pos[1] = y;
-            pos[2] = z;
+            eye[0] = x;
+            eye[1] = y;
+            eye[2] = z;
         }
         int *getPos(void){
-            return pos;
+            return eye;
         }
         void setRot(int x, int y, int z){
-            rot[0] = x;
-            rot[1] = y;
-            rot[2] = z;
+            ref[0] = x;
+            ref[1] = y;
+            ref[2] = z;
         }
         int *getRot(void){
-            return pos;
+            return ref;
         }
+        // CRIA A CAMERA NO CENARIO
         void createCamera()
         {
             glLoadIdentity(); // Inicia a matriz de projecao corrente.
-            gluLookAt(pos[0],pos[1],pos[2], rot[0],rot[1],rot[2], 0,1,0); // Seta a posicao e visao da camera.
+            gluLookAt(eye[0],eye[1],eye[2], ref[0],ref[1],ref[2], 0,1,0); // Seta a posicao e visao da camera.
             glutPostRedisplay();
         }
 };
