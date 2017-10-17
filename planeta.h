@@ -9,26 +9,40 @@ using namespace std;
 
 class Planeta{
     private:
-        float angulo;
-        int slices = 20;
-        int stacks = 20;
-        float color[3];
-        float pos[3];
+        int slices = 20, stacks = 20;
+        float color[3] = {0,0,0};
+        float pos[3] = {0,0,0};
+        float scale[3] = {0,0,0};
     public:
-        void setAngulo(float _angulo){
-            angulo = _angulo;
+        void setPos(float x, float y, float z){
+            pos[0] = x;
+            pos[1] = y;
+            pos[2] = z;
         }
-        float getAngulo(void){
-            return angulo;
+        float *getPos(void){
+            return pos;
+        }
+        void setColor(float r, float g, float b){
+            color[0] = r;
+            color[1] = g;
+            color[2] = b;
+        }
+        float *getColor(void){
+            return color;
+        }
+        void setScale(float x, float y, float z){
+            scale[0] = x;
+            scale[1] = y;
+            scale[2] = z;
+        }
+        float *getScale(void){
+            return scale;
         }
 
-    void desenharPlaneta(float red, float green, float blue, float angulo){
-        glPushMatrix();
-            glRotated(angulo,0,1,0); // rotacao do planete
-            glTranslatef(0,0,0); // Posicao no espaco
+        void desenharPlaneta(){
+            glTranslatef(pos[0],pos[1],pos[2]); // Posicao no espaco
             glutSolidSphere(1,slices,stacks); // Esfera
-            glColor3f(red,green,blue); // Cor do planeta
-            glScaled(0,0,0); // Escala do planeta
-        glPopMatrix();
-    }
+            glColor3f(color[0],color[1],color[2]); // Cor do planeta
+            glScaled(scale[0],scale[1],scale[2]); // Escala do planeta
+        }
 };

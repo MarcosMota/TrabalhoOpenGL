@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1507990200 source:c:\users\luan_\documents\codeblocks\sistemasolar\main.cpp
+1508202291 source:c:\projeto\trabalhoopengl\main.cpp
 	<windows.h>
+	<stdlib.h>
+	<stdio.h>
+	"planeta.h"
+	"camera.h"
 	<GLUT/glut.h>
 	<GL/glut.h>
-	<stdlib.h>
 
 1301114762 c:\program files (x86)\codeblocks\mingw\include\windows.h
 	<winresrc.h>
@@ -209,6 +212,21 @@
 1301114756 c:\program files (x86)\codeblocks\mingw\include\oleidl.h
 	<objfwd.h>
 
+1341010376 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1341010380 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
+
+1508201619 c:\projeto\trabalhoopengl\planeta.h
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<iostream>
+
 976677772 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
 	<GL/gl.h>
@@ -220,30 +238,7 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1508105082 source:c:\projeto\trabalhoopengl\main.cpp
-	<windows.h>
-	<stdlib.h>
-	<stdio.h>
-	"planeta.h"
-	<GLUT/glut.h>
-	<GL/glut.h>
-
-1508088779 source:/home/marcosmota/Documentos/Projetos/OpenGL/TrabalhoOpenGL/main.cpp
-	<GLUT/glut.h>
-	<GL/glut.h>
-	<stdlib.h>
-
-1341010376 c:\program files (x86)\codeblocks\mingw\include\stdio.h
-	<_mingw.h>
-	<stddef.h>
-	<stdarg.h>
-	<sys/types.h>
-
-1341010380 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
-	<_mingw.h>
-	<stddef.h>
-
-1508105078 c:\projeto\trabalhoopengl\planeta.h
+1508200670 c:\projeto\trabalhoopengl\camera.h
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<iostream>
