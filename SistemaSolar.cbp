@@ -47,6 +47,7 @@
 			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/lib" />
 		</Linker>
 		<Unit filename="camera.h" />
+		<Unit filename="iluminacao.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="planeta.h" />
 		<Extensions>

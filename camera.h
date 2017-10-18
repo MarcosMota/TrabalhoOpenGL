@@ -7,8 +7,7 @@
 
 using namespace std;
 
-class Camera
-{
+class Camera{
     private:
         // PROPRIEDADES DA CLASSE.
         int eye[3]; // Posição do ponto do olho.
