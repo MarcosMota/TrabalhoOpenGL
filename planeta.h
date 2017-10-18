@@ -64,7 +64,7 @@ class Planeta{
             glRotatef(translation,0,1,0); // rotacao do planete
             glTranslatef(pos[0],pos[1],pos[2]); // Posicao no espaco
             glRotatef(rotation,0,1,0); // rotacao do planete
-            glColor3f(color[0],color[1],color[2]); // Cor do planeta
+            glColor4d(color[0],color[1],color[2],1.0); // Cor do planeta
             glutSolidSphere(size,size*slices,size*stacks); // Esfera
         }
         // MATERIAL REFLETOR
@@ -97,11 +97,17 @@ class Planeta{
             glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
             glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
         }
-        // DESENHA ANEL (NO CASO DE JUPTER)
-        void drawRing(){
+        // DESENHA LINHA DE ANEL (NO CASO DO SOL)
+        void drawRingSun(float width, float dist){
             glRotatef(90,1,0,0);
             glColor3f(color[0],color[1],color[2]);
-            glutSolidTorus(0.5,2,2,30);
+            glutWireTorus(width,dist,2,2);
+        }
+        // DESENHA ANEL (NO CASO DE saturno)
+        void drawRing(float width, float dist){
+            glRotatef(90,1,0,0);
+            glColor3f(color[0],color[1],color[2]);
+            glutSolidTorus(width,dist,2,30);
         }
         // DESENHA NAVE ESPACIAL QUADRADA
         void drawSquareSpaceship(){
