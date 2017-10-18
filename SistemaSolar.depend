@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1508305322 source:c:\projeto\trabalhoopengl\main.cpp
+1508358818 source:c:\projeto\trabalhoopengl\main.cpp
 	<windows.h>
 	<stdlib.h>
 	<stdio.h>
@@ -223,7 +223,7 @@
 	<_mingw.h>
 	<stddef.h>
 
-1508305260 c:\projeto\trabalhoopengl\planeta.h
+1508358917 c:\projeto\trabalhoopengl\planeta.h
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<iostream>
@@ -239,12 +239,12 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1508221206 c:\projeto\trabalhoopengl\camera.h
+1508306565 c:\projeto\trabalhoopengl\camera.h
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<iostream>
 
-1508301045 c:\projeto\trabalhoopengl\iluminacao.h
+1508358451 c:\projeto\trabalhoopengl\iluminacao.h
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<iostream>

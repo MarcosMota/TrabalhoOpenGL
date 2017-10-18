@@ -11,7 +11,7 @@
 #include <GL/glut.h>
 #endif
 
-int vert = 5, horiz, zoom = -15;
+int vert, horiz, zoom = -15;
 
 // FUNÇÃO AO CAPTURAR O TECLADO
 static void teclado(unsigned char key, int x, int y)
@@ -23,22 +23,34 @@ static void teclado(unsigned char key, int x, int y)
             exit(0);
             break;
         case 'w':
-            vert += 1;
+            if(vert<11){
+                vert += 1;
+            }
             break;
         case 's':
-            vert -= 1;
+            if(vert>-11){
+                vert -= 1;
+            }
             break;
         case 'd':
-            horiz += 1;
+            if(horiz>-30){
+                horiz -= 1;
+            }
             break;
         case 'a':
-            horiz -= 1;
+            if(horiz<30){
+                horiz += 1;
+            }
             break;
         case 'o':
-            zoom += 1;
+            if(zoom<-3){
+                zoom += 1;
+            }
             break;
         case 'l':
-            zoom -= 1;
+            if(zoom>-30){
+                zoom -= 1;
+            }
             break;
     }
 
@@ -50,7 +62,7 @@ static void display(void)
 {
     // CONFIGURACAO DA CAMERA
     Camera cam;
-    cam.setPos(0,vert,zoom);
+    cam.setPos(horiz,vert,zoom);
     cam.setRot(horiz,0,0);
     cam.createCamera();
     // Limpa a janela e o depth buffer
@@ -59,13 +71,28 @@ static void display(void)
     // ---------------- PLANETAS ---------------- //
     // --- DESENHA SOL ---
     glPushMatrix();
-        Iluminacao luz1;
-        luz1.createLight();
+        Iluminacao luzSol;
+        luzSol.createLight(0);
         Planeta sol;
         sol.setMatSun();
         sol.setSize(1);
         sol.setColor(0.88,0.88,0.06);
         sol.drawPlanet();
+    glPopMatrix();
+    // --- DESENHA MERCURIO ---
+    glPushMatrix();
+        Planeta mercurio;
+        mercurio.setMatFrosted();
+        mercurio.setSize(1);
+        mercurio.setRotation(10);
+        mercurio.setTranslation(10);
+        mercurio.setPos(5.0,0.0,0.0);
+        mercurio.setColor(0.88,0.88,0.06);
+        mercurio.drawPlanet();
+        mercurio.drawSquareSpaceship();
+        Iluminacao conelight;
+        conelight.setColorRed();
+        conelight.createLight(1);
     glPopMatrix();
     // ---------------- PLANETAS ---------------- //
 

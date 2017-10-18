@@ -10,7 +10,7 @@ using namespace std;
 class Planeta{
     private:
         // PROPRIEDADES DA CLASSE.
-        int slices = 50, stacks = 50; // Quantidade de vértices da esfera.
+        int slices = 500, stacks = 500; // Quantidade de vértices da esfera.
         float size = 1; // Variavel de tamanho.
         float rotation = 0; // Velocidade da rotacao em torno de si.
         float translation = 0; // Velocidade da rotacao em torno do sol.
@@ -100,28 +100,28 @@ class Planeta{
         // DESENHA ANEL (NO CASO DE JUPTER)
         void drawRing(){
             glRotatef(90,1,0,0);
-            glColor3f(1.0,0.0,0.0);
+            glColor3f(color[0],color[1],color[2]);
             glutSolidTorus(0.5,2,2,30);
         }
         // DESENHA NAVE ESPACIAL QUADRADA
         void drawSquareSpaceship(){
             glRotatef(rotation*2,1,0,1);
             glTranslatef(size+0.2,0.0,0.0);
-            glColor3f(1.0,0.0,0.0);
+            glColor3f(0.0,1.0,1.0);
             glutSolidCube(0.1);
         }
         // DESENHA NAVE ESPACIAL CONE
         void drawConeSpaceship(){
             glRotatef(rotation*2,1,1,0);
             glTranslatef(size+0.2,0.0,0.0);
-            glColor3f(1.0,0.0,0.0);
+            glColor3f(1.0,0.0,1.0);
             glutSolidCone(size/10,size/10,10,10);
         }
         // DESENHA A LUA
         void drawMoon(){
             glRotatef(rotation*2,0,0,1);
             glTranslatef(size+0.3,0.0,0.0);
-            glColor3f(1.0,0.0,0.0);
+            glColor3f(0.7,0.7,0.7);
             glutSolidSphere(size/10,slices,stacks);
         }
 };
