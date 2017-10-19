@@ -19,7 +19,7 @@ class Planeta{
         GLfloat specular[4] = {0.0, 0.0, 0.0, 1.0};
         GLfloat diffuse[4] = {0.0, 0.0, 0.0, 1.0};
         GLfloat emission[4] = {0.0, 0.0, 0.0, 1.0};
-        GLfloat shininess[1] = {50.0};
+        GLfloat shininess = 50.0;
         // VARIAVEL DE TEMPO
         const double t = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
     public:
@@ -61,10 +61,12 @@ class Planeta{
 
         // DESENHA PLANETA
         void drawPlanet(){
+            glNormal3f(0,0,1);
+            glTexCoord2f(1.0f, 1.0f);
             glRotatef(translation,0,1,0); // rotacao do planete
             glTranslatef(pos[0],pos[1],pos[2]); // Posicao no espaco
             glRotatef(rotation,0,1,0); // rotacao do planete
-            glColor4d(color[0],color[1],color[2],1.0); // Cor do planeta
+            glColor4f(color[0],color[1],color[2],0.0); // Cor do planeta
             glutSolidSphere(size,size*slices,size*stacks); // Esfera
         }
         // MATERIAL REFLETOR
@@ -75,17 +77,17 @@ class Planeta{
             glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, emission);
             glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-            glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
+            glMaterialf(GL_FRONT, GL_SHININESS, shininess);
         }
         // MATERIAL FOSCO
         void setMatFrosted(){
             diffuse[0] = {1.0};
             diffuse[1] = {1.0};
             diffuse[2] = {1.0};
-            glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, emission);
+            glMaterialfv(GL_FRONT, GL_EMISSION, emission);
             glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-            glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
+            glMaterialf(GL_FRONT, GL_SHININESS, shininess);
         }
         // MATERIAL BRILHOSO (SOL)
         void setMatSun(){
@@ -95,7 +97,7 @@ class Planeta{
             glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, emission);
             glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-            glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
+            glMaterialf(GL_FRONT, GL_SHININESS, shininess);
         }
         // DESENHA LINHA DE ANEL (NO CASO DO SOL)
         void drawRingSun(float width, float dist){
@@ -111,21 +113,22 @@ class Planeta{
         }
         // DESENHA NAVE ESPACIAL QUADRADA
         void drawSquareSpaceship(){
-            glRotatef(rotation*2,1,0,1);
+            glRotatef(t*20,1,0,1);
             glTranslatef(size+0.2,0.0,0.0);
             glColor3f(0.0,1.0,1.0);
             glutSolidCube(0.1);
         }
         // DESENHA NAVE ESPACIAL CONE
-        void drawConeSpaceship(){
-            glRotatef(rotation*2,1,1,0);
-            glTranslatef(size+0.2,0.0,0.0);
-            glColor3f(1.0,0.0,1.0);
-            glutSolidCone(size/10,size/10,10,10);
+        void drawTorusSpaceship(){
+            //glRotatef(90,1,0,0);
+            glRotatef(t*20,1,1,0);
+            glTranslatef(size+0.3,0.0,0.0);
+            glColor3f(1.0,1.0,0.0);
+            glutSolidTorus(size/15,size/15,20,3);
         }
         // DESENHA A LUA
         void drawMoon(){
-            glRotatef(rotation*2,0,0,1);
+            glRotatef(t*20,0,0,1);
             glTranslatef(size+0.3,0.0,0.0);
             glColor3f(0.7,0.7,0.7);
             glutSolidSphere(size/10,slices,stacks);

@@ -34,19 +34,18 @@ static void teclado(unsigned char key, int x, int y)
             }
             break;
         case 'd':
-            if(horiz>-40){
+            if(horiz>-45){
                 horiz -= 1;
             }
             break;
         case 'a':
-            if(horiz<40){
+            if(horiz<45){
                 horiz += 1;
             }
             break;
         case 'o':
-            if(zoom<-1){
+            if(zoom<-3){
                 zoom += 1;
-                cout << zoom << endl;
             }
             break;
         case 'l':
@@ -78,7 +77,7 @@ static void display(void)
         luzSol.createLight(0);
         Planeta sol;
         sol.setMatSun();
-        sol.setSize(2.5);
+        sol.setSize(5);
         sol.setColor(0.88,0.88,0.06);
         sol.drawPlanet();
         sol.drawRingSun(10.0,10.0);
@@ -90,7 +89,7 @@ static void display(void)
         mercurio.setSize(0.04);
         mercurio.setRotation(speed*47.3);
         mercurio.setTranslation(speed*80);
-        mercurio.setPos(5.0,0.0,0.0);
+        mercurio.setPos(10.0,0.0,0.0);
         mercurio.setColor(0.59,0.60,0.0);
         mercurio.drawPlanet();
     glPopMatrix();
@@ -101,7 +100,7 @@ static void display(void)
         venus.setSize(0.12);
         venus.setRotation(speed*35);
         venus.setTranslation(speed*32);
-        venus.setPos(10.0,0.0,0.0);
+        venus.setPos(15.0,0.0,0.0);
         venus.setColor(0.90,0.32,0.4);
         venus.drawPlanet();
     glPopMatrix();
@@ -112,8 +111,8 @@ static void display(void)
         terra.setSize(0.13);
         terra.setRotation(speed*29);
         terra.setTranslation(speed*29);
-        terra.setPos(15.0,0.0,0.0);
-        terra.setColor(0.0,0.0,0.1);
+        terra.setPos(20.0,0.0,0.0);
+        terra.setColor(0.0,0.0,1.0);
         terra.drawPlanet();
         terra.drawMoon();
     glPopMatrix();
@@ -124,7 +123,7 @@ static void display(void)
         marte.setSize(0.06);
         marte.setRotation(speed*24);
         marte.setTranslation(speed*64);
-        marte.setPos(20.0,0.0,0.0);
+        marte.setPos(25.0,0.0,0.0);
         marte.setColor(0.94,0.2,0.2);
         marte.drawPlanet();
     glPopMatrix();
@@ -135,13 +134,13 @@ static void display(void)
         jupter.setSize(1.3);
         jupter.setRotation(speed*13);
         jupter.setTranslation(speed*5.3);
-        jupter.setPos(25.0,0.0,0.0);
+        jupter.setPos(30.0,0.0,0.0);
         jupter.setColor(1.0,0.41,0.13);
         jupter.drawPlanet();
-        jupter.drawConeSpaceship();
-        /*Iluminacao coneLight;
-        coneLight.setColorGreen();
-        coneLight.createLight(1);*/
+        jupter.drawTorusSpaceship();
+        Iluminacao coneLight;
+        coneLight.setColorRed();
+        coneLight.createLight(1);
     glPopMatrix();
     // --- DESENHA saturno ---
     glPushMatrix();
@@ -150,14 +149,10 @@ static void display(void)
         saturno.setSize(1.16);
         saturno.setRotation(speed*9.6);
         saturno.setTranslation(speed*9.14);
-        saturno.setPos(30.0,0.0,0.0);
+        saturno.setPos(35.0,0.0,0.0);
         saturno.setColor(0.98,0.62,0.14);
         saturno.drawPlanet();
         saturno.drawRing(0.5,2.0);
-        saturno.drawSquareSpaceship();
-        Iluminacao squareLight;
-        squareLight.setColorRed();
-        squareLight.createLight(1);
     glPopMatrix();
     // --- DESENHA urano ---
     glPushMatrix();
@@ -166,7 +161,7 @@ static void display(void)
         urano.setSize(0.5);
         urano.setRotation(speed*6.8);
         urano.setTranslation(speed*15.2);
-        urano.setPos(35.0,0.0,0.0);
+        urano.setPos(40.0,0.0,0.0);
         urano.setColor(0.01,0.84,0.91);
         urano.drawPlanet();
         urano.drawRing(0.01,0.6);
@@ -178,9 +173,13 @@ static void display(void)
         netuno.setSize(0.49);
         netuno.setRotation(speed*5.4);
         netuno.setTranslation(speed*13.9);
-        netuno.setPos(40.0,0.0,0.0);
+        netuno.setPos(45.0,0.0,0.0);
         netuno.setColor(0.7,0.32,0.78);
         netuno.drawPlanet();
+        netuno.drawSquareSpaceship();
+        Iluminacao squareLight;
+        squareLight.setColorGreen();
+        squareLight.createLight(2);
     glPopMatrix();
     // ---------------- PLANETAS ---------------- //
 
@@ -207,25 +206,19 @@ void MenuSpeed(int op)
 {
    switch(op) {
     case 0:
-        speed = 0.5;
+        speed = 0.0;
         break;
     case 1:
-        speed = 1.0;
+        speed = 0.1;
         break;
     case 2:
-        speed = 2.0;
+        speed = 1.0;
         break;
     case 3:
-        speed = 3.0;
+        speed = 2.0;
         break;
     case 4:
-        speed = 5.0;
-        break;
-    case 5:
-        speed = 10.0;
-        break;
-    case 6:
-        speed = 0.0;
+        speed = 3.0;
         break;
     }
     glutPostRedisplay();
@@ -241,13 +234,11 @@ void CriaMenu()
 {
     int menu,submenu1;
     submenu1 = glutCreateMenu(MenuSpeed);
-    glutAddMenuEntry("Pausar",6);
-    glutAddMenuEntry("Lento",0);
-    glutAddMenuEntry("Médio",1);
-    glutAddMenuEntry("Rápido x2",2);
-    glutAddMenuEntry("Rápido x3",3);
-    glutAddMenuEntry("Rápido x5",4);
-    glutAddMenuEntry("Rápido x10",5);
+    glutAddMenuEntry("Pausar",0);
+    glutAddMenuEntry("Lento",1);
+    glutAddMenuEntry("Normal",2);
+    glutAddMenuEntry("Rápido x2",3);
+    glutAddMenuEntry("Rápido x3",4);
     menu = glutCreateMenu(MenuPrincipal);
     glutAddSubMenu("Velocidade",submenu1);
 

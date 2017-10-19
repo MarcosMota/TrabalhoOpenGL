@@ -23,6 +23,7 @@ class Iluminacao{
             glEnable(GL_LIGHTING);
             // Ativa o "Color Tracking"
             glEnable(GL_COLOR_MATERIAL);
+            glEnable(GL_NORMALIZE);
         }
         // GETS AND SETTERS.
         void setPos(float x, float y, float z){
