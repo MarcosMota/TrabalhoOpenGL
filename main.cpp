@@ -80,7 +80,6 @@ static void display(void)
         sol.setSize(5);
         sol.setColor(0.88,0.88,0.06);
         sol.drawPlanet();
-        sol.drawRingSun(10.0,10.0);
     glPopMatrix();
     // --- DESENHA MERCURIO ---
     glPushMatrix();

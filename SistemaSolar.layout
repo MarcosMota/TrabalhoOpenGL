@@ -1,33 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
-	<ActiveTarget name="Debug" />
-	<File name="planeta.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<ActiveTarget name="Release" />
+	<File name="camera.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1941" topLine="54" />
+			<Cursor1 position="388" topLine="4" />
 		</Cursor>
+		<Folding>
+			<Collapse line="16" />
+			<Collapse line="21" />
+			<Collapse line="24" />
+			<Collapse line="29" />
+			<Collapse line="34" />
+		</Folding>
+	</File>
+	<File name="iluminacao.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2172" topLine="24" />
+		</Cursor>
+		<Folding>
+			<Collapse line="16" />
+			<Collapse line="28" />
+			<Collapse line="33" />
+			<Collapse line="38" />
+			<Collapse line="44" />
+			<Collapse line="50" />
+		</Folding>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="974" topLine="1" />
+			<Cursor1 position="1799" topLine="32" />
 		</Cursor>
 		<Folding>
 			<Collapse line="18" />
-			<Collapse line="191" />
-			<Collapse line="205" />
-			<Collapse line="228" />
-			<Collapse line="233" />
-			<Collapse line="249" />
+			<Collapse line="190" />
+			<Collapse line="204" />
+			<Collapse line="227" />
+			<Collapse line="232" />
+			<Collapse line="248" />
 		</Folding>
 	</File>
-	<File name="iluminacao.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="planeta.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2190" topLine="55" />
+			<Cursor1 position="806" topLine="36" />
 		</Cursor>
-	</File>
-	<File name="camera.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="942" topLine="18" />
-		</Cursor>
+		<Folding>
+			<Collapse line="26" />
+			<Collapse line="31" />
+			<Collapse line="34" />
+			<Collapse line="39" />
+			<Collapse line="42" />
+			<Collapse line="45" />
+			<Collapse line="48" />
+			<Collapse line="51" />
+			<Collapse line="54" />
+			<Collapse line="57" />
+			<Collapse line="62" />
+			<Collapse line="72" />
+			<Collapse line="82" />
+			<Collapse line="92" />
+			<Collapse line="102" />
+			<Collapse line="108" />
+			<Collapse line="115" />
+			<Collapse line="123" />
+		</Folding>
 	</File>
 </CodeBlocks_layout_file>

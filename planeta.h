@@ -99,12 +99,6 @@ class Planeta{
             glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
             glMaterialf(GL_FRONT, GL_SHININESS, shininess);
         }
-        // DESENHA LINHA DE ANEL (NO CASO DO SOL)
-        void drawRingSun(float width, float dist){
-            glRotatef(90,1,0,0);
-            glColor3f(color[0],color[1],color[2]);
-            glutWireTorus(width,dist,2,2);
-        }
         // DESENHA ANEL (NO CASO DE saturno)
         void drawRing(float width, float dist){
             glRotatef(90,1,0,0);
